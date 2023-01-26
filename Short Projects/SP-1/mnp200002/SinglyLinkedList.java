@@ -140,6 +140,50 @@ public class SinglyLinkedList<T> implements Iterable<T> {
 		}
     }
 
+	public void addFirst(T value) {
+		Entry<T> ent = new Entry<>(value, null);
+		ent.next = head.next;
+		head.next = ent;
+		size++;
+		return;
+	}
+
+	public T removeFirst() {
+		T value = head.next.element;
+		head.next = head.next.next;
+		size--;
+		return value;
+	}
+
+	public T remove(T value) {
+		Entry<T> node = head.next;
+
+		// First element
+		if(node.element == value) {
+			head.next = node.next;
+			node = null;
+			size--;
+			return value;
+		}
+		Entry<T> prev = node;
+		node = node.next;
+		
+		// In between element
+		while(node != null) {
+			if(node.element == value) {
+				prev.next = node.next;
+				node.next = null;
+				size--;
+				return value;
+			}
+
+			prev = node;
+			node = node.next;
+		}
+
+		throw new NoSuchElementException();
+	}
+
     public static void main(String[] args) throws NoSuchElementException {
         int n = 10;
         if(args.length > 0) {
@@ -176,11 +220,10 @@ public class SinglyLinkedList<T> implements Iterable<T> {
 		lst.printList();
 		lst.unzip();
 		lst.printList();
-		// lst.removeFirst();
-		// lst.remove(9);
-		// lst.addFirst(2);
-		// lst.printList();
-
+		lst.removeFirst();
+		lst.remove(9);
+		lst.addFirst(2);
+		lst.printList();
     }
 }
 
