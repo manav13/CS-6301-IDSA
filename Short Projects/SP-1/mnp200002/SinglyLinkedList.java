@@ -16,6 +16,12 @@ public class DoublyLinkedList<T> extends SinglyLinkedList<T> {
 
  */
 
+/*
+ * Team Number - SP 37
+ * Manav Prajapati - mnp200002
+ * Rahul Bosamia - rnb200003
+ */
+
 package mnp200002; 	// change to your netid
 import java.util.Iterator;
 import java.util.Scanner;
