@@ -124,10 +124,10 @@ public class DoublyLinkedList<T> extends SinglyLinkedList<T> {
 
 	public void printList() {
 		System.out.print(size + ": ");
-		Entry node = (Entry) head;
+		Entry<T> node = (Entry<T>) head;
 		while(node!=null) {
 			System.out.print(node.element + " ");
-			node = (Entry) node.next;
+			node = (Entry<T>) node.next;
 		}
 		System.out.println();
     }

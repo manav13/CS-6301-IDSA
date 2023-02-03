@@ -24,7 +24,6 @@ public class DoublyLinkedList<T> extends SinglyLinkedList<T> {
 
 package mnp200002; 	// change to your netid
 import java.util.Iterator;
-import java.util.Scanner;
 import java.util.NoSuchElementException;
 
 public class SinglyLinkedList<T> implements Iterable<T> {
