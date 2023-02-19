@@ -23,30 +23,32 @@ public class RMQFischerHeun implements RMQStructure {
     }
 
     public static String cartesianEncoding(int[] arr) {
-        String output = "";
+        StringBuilder output = new StringBuilder();
         Stack<Integer> st = new Stack<>();
 
         for(int i=0; i<arr.length; i++) {
             if(st.empty() || st.peek() <= arr[i]) {
                 st.push(arr[i]);
-                output += "1";
+                output.append("1");
             }
             else {
                 while(!st.empty() && st.peek() > arr[i]) {
                     st.pop();
-                    output += "0";
+                    output.append("0");
                 }
                 st.push(arr[i]);
-                output += "1";
+                output.append("1");
+
             }
         }
 
         while(!st.empty()) {
             st.pop();
-            output += "0";
+            output.append("0");
+
         }
 
-        return output;
+        return output.toString();
     }
 
     @Override
@@ -115,12 +117,12 @@ public class RMQFischerHeun implements RMQStructure {
 
     public static void main(String[] args) {
         RMQFischerHeun rmq = new RMQFischerHeun();
-        int[] arr = new int[] {66, 13, 59, 75, 55, 39, 31, 17, 25, 84, 44, 22};
+        int[] arr = new int[] {66, 13, 59, 5, 55, 39, 31, 17, 25, 84, 44, 22};
 
         rmq.preProcess(arr);
 
         // System.out.println(rmq.query(arr, 0, 2));
-        System.out.println(rmq.query(arr, 8, 10));
+        System.out.println(rmq.query(arr, 1, 9));
         // System.out.println(rmq.query(arr, 1, 3));
         // System.out.println(rmq.query(arr, 0, 3));
 
