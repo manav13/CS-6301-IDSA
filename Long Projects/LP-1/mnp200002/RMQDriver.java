@@ -14,8 +14,8 @@ public class RMQDriver {
 	int rangeSize = 0;
 	if(args.length > 0) { choice = Integer.parseInt(args[0]); }
 	// specify the range as % of n
-	if(args.length > 1) { rangeSize = (n / 100) * Integer.parseInt(args[1]); }
-	if(args.length > 2) { n = Integer.parseInt(args[2]); }
+	if(args.length > 1) { n = Integer.parseInt(args[2]); }
+	if(args.length > 2) { rangeSize = (n / 100) * Integer.parseInt(args[1]); }
 	
 	if (rangeSize == 0) rangeSize = random.nextInt(n);
 
