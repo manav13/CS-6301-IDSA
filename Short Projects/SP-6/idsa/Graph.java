@@ -6,8 +6,6 @@
 
 package idsa;
 
-import idsa.*;
-
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -24,184 +22,184 @@ public class Graph implements Iterable<Graph.Vertex> {
      * Nested class to represent a vertex of a graph
      */
     public class Vertex {
-		int name; // name of the vertex
+	int name; // name of the vertex
 
-		/**
-		 * Constructor for vertex
-		 * 
-		 * @param n
-		 *            : int - name of the vertex
-		 */
-		public Vertex(int n) {
-			name = n;
-		}
+	/**
+	 * Constructor for vertex
+	 * 
+	 * @param n
+	 *            : int - name of the vertex
+	 */
+	public Vertex(int n) {
+	    name = n;
+	}
 
-		/**
-		 * Constructor for vertex, to be used in applications that need to extend vertex
-		 * @param u	: Vertex - the vertex to be cloned
-		 */
-		public Vertex(Vertex u) {
-			name = u.name;
-		}
+	/**
+	 * Constructor for vertex, to be used in applications that need to extend vertex
+	 * @param u	: Vertex - the vertex to be cloned
+	 */
+	public Vertex(Vertex u) {
+	    name = u.name;
+	}
 
-		/** Number of outgoing edges from the vertex.
-		 */
-		public int outDegree() {
-			return adj(this).outEdges.size();
-		}
-		
-		/** Number of incoming edges from the vertex.
-		 */
-		public int inDegree() {
-			return adj(this).inEdges.size();
-		}
-		
-		/**
-		 * Method to get name of a vertex.
-		 *
-		 */
-		public int getName() {
-			return name;
-		}
+	/** Number of outgoing edges from the vertex.
+	 */
+	public int outDegree() {
+	    return adj(this).outEdges.size();
+	}
+	
+	/** Number of incoming edges from the vertex.
+	 */
+	public int inDegree() {
+	    return adj(this).inEdges.size();
+	}
+	
+	/**
+	 * Method to get name of a vertex.
+	 *
+	 */
+	public int getName() {
+	    return name;
+	}
 
-		/* Index i stores vertex with name i+1 */
-		public int getIndex() {
-			return name - 1;
-		}
+	/* Index i stores vertex with name i+1 */
+	public int getIndex() {
+	    return name - 1;
+	}
 
-		/**
-		 * hashCode of a vertex can be its name, since name is unique
-		 */
-		public int hashCode() {
-			return name;
-		}
+	/**
+	 * hashCode of a vertex can be its name, since name is unique
+	 */
+	public int hashCode() {
+	    return name;
+	}
 
-		/** name of vertex is unique, so use that to implement equals
-		 */
-		@Override
-		public boolean equals(Object other) {
-			Vertex otherVertex = (Vertex) other;
-			if(otherVertex == null) {
-			return false;
-			}
-			return this.name == otherVertex.name;
-		}
+	/** name of vertex is unique, so use that to implement equals
+	 */
+	@Override
+	public boolean equals(Object other) {
+	    Vertex otherVertex = (Vertex) other;
+	    if(otherVertex == null) {
+		return false;
+	    }
+	    return this.name == otherVertex.name;
+	}
 
-		
-		/**
-		 * Method to get vertex name
-		 */
-		public String toString() {
-			return Integer.toString(name);
-		}
+	
+	/**
+	 * Method to get vertex name
+	 */
+	public String toString() {
+	    return Integer.toString(name);
+	}
     }
 
     /**
      * Nested class that represents an edge of a Graph
      */
     public class Edge implements Comparable<Edge> {
-		Vertex from; // head vertex
-		Vertex to;   // tail vertex
-		int weight;  // weight of edge
-		int name;    // name of edge
-		/**
-		 * Constructor for Edge
-		 * @param u   : Vertex - Vertex from which edge starts
-		 * @param v   : Vertex - Vertex on which edge lands
-		 * @param w   : int - weight of edge
-		 * @param n   : int - name of edge
-		 */
-		public Edge(Vertex u, Vertex v, int w, int n) {
-			from = u;
-			to = v;
-			weight = w;
-			name = n;
-		}
+	Vertex from; // head vertex
+	Vertex to;   // tail vertex
+	int weight;  // weight of edge
+	int name;    // name of edge
+	/**
+	 * Constructor for Edge
+	 * @param u   : Vertex - Vertex from which edge starts
+	 * @param v   : Vertex - Vertex on which edge lands
+	 * @param w   : int - weight of edge
+	 * @param n   : int - name of edge
+	 */
+	public Edge(Vertex u, Vertex v, int w, int n) {
+	    from = u;
+	    to = v;
+	    weight = w;
+	    name = n;
+	}
 
-		/** Method to get vertex incident to edge at "from" end */
-		public Vertex fromVertex() {
-			return from;
-		}
+	/** Method to get vertex incident to edge at "from" end */
+	public Vertex fromVertex() {
+	    return from;
+	}
 
-		/** Method to get vertex incident to edge at "to" end */
-		public Vertex toVertex() {
-			return to;
-		}
+	/** Method to get vertex incident to edge at "to" end */
+	public Vertex toVertex() {
+	    return to;
+	}
 
-		/* Get weight of edge */
-		public int getWeight() {
-			return weight;
-		}
+	/* Get weight of edge */
+	public int getWeight() {
+	    return weight;
+	}
 
-		/** Set weight of edge. Old weight is returned */
-		public int setWeight(int newWeight) {
-			int oldWeight = weight;
-			weight = newWeight;
-			return oldWeight;
-		}
+	/** Set weight of edge. Old weight is returned */
+	public int setWeight(int newWeight) {
+	    int oldWeight = weight;
+	    weight = newWeight;
+	    return oldWeight;
+	}
 
-		/** Get name of edge */
-		public int getName() {
-			return name;
-		}
-		
-		/** Set the name of an Edge */
-		public void setName(int n) {
-			name = n;
-		}
+	/** Get name of edge */
+	public int getName() {
+	    return name;
+	}
+	
+	/** Set the name of an Edge */
+	public void setName(int n) {
+	    name = n;
+	}
 
-		/**
-		 * Method to find the other end end of an edge, given a vertex reference
-		 * This method is used for undirected graphs
-		 * 
-		 * @param u
-		 *            : Vertex
-		 * @return
-					 : Vertex - other end of edge
-		*/
-		public Vertex otherEnd(Vertex u) {
-			assert from.equals(u) || to.equals(u);
-			// if the vertex u is the head of the arc, then return the tail else return the head
-			if (from.equals(u)) {
-			return to;
-			} else {
-			return from;
-			} 
-		}
+	/**
+	 * Method to find the other end end of an edge, given a vertex reference
+	 * This method is used for undirected graphs
+	 * 
+	 * @param u
+	 *            : Vertex
+	 * @return
+	              : Vertex - other end of edge
+	*/
+	public Vertex otherEnd(Vertex u) {
+	    assert from.equals(u) || to.equals(u);
+	    // if the vertex u is the head of the arc, then return the tail else return the head
+	    if (from.equals(u)) {
+		return to;
+	    } else {
+		return from;
+	    } 
+	}
 
-		/** To use hashing with Edge as key, you need to ensure that name is unique
-		 */
-		public int hashCode() {
-			return name;
-		}
+	/** To use hashing with Edge as key, you need to ensure that name is unique
+	 */
+	public int hashCode() {
+	    return name;
+	}
 
-		/** Edges are equal if they have the same name and connect same ends */
-		@Override
-		public boolean equals(Object other) {
-			if(other == null) {
-			return false;
-			}
-			Edge otherEdge = (Edge) other;
-			return this.name == otherEdge.name && this.from.equals(otherEdge.from) && this.to.equals(otherEdge.to);
-		}
+	/** Edges are equal if they have the same name and connect same ends */
+	@Override
+	public boolean equals(Object other) {
+	    if(other == null) {
+		return false;
+	    }
+	    Edge otherEdge = (Edge) other;
+	     return this.name == otherEdge.name && this.from.equals(otherEdge.from) && this.to.equals(otherEdge.to);
+	}
 
-		public int compareTo(Edge other) {
-			if(other == null || this.weight > other.weight) return 1;
-			else if(this.weight < other.weight) return -1;
-			else return 0;
-		}
+	public int compareTo(Edge other) {
+	    if(other == null || this.weight > other.weight) return 1;
+	    else if(this.weight < other.weight) return -1;
+	    else return 0;
+	}
 
-		/**
-		/**
-		 * Return the string "(x,y)", where edge goes from x to y
-		 */
-		public String toString() {
-			return "(" + from + "," + to + ")";
-		}
+	/**
+	/**
+	 * Return the string "(x,y)", where edge goes from x to y
+	 */
+	public String toString() {
+	    return "(" + from + "," + to + ")";
+	}
 
-		public String stringWithSpaces() {
-			return from + " " + to + " " + weight;
-		}
+	public String stringWithSpaces() {
+	    return from + " " + to + " " + weight;
+	}
     }
 
     /** Class to store an adjacency list of a vertex
@@ -220,13 +218,13 @@ public class Graph implements Iterable<Graph.Vertex> {
     /** Return the adjacency list of vertex u
      */
     public AdjList adj(Vertex u) {
-		return adjList[u.getIndex()];
+	return adjList[u.getIndex()];
     }
 
     /** Return the adjacency list of vertex stored at index
      */
     public AdjList adj(int index) {
-		return adjList[index];
+	return adjList[index];
     }
 
 
@@ -237,91 +235,91 @@ public class Graph implements Iterable<Graph.Vertex> {
      *            : int - number of vertices
      */    
     public Graph(int n) {
-		directed = false;  // default is undirected graph
-		initialize(n);
+	directed = false;  // default is undirected graph
+	initialize(n);
     }
 
     public Graph(int n, boolean directed) {
-		this.directed = directed;
-		initialize(n);
+	this.directed = directed;
+	initialize(n);
     }
 
     public Graph(Graph g) {
-		this.adjList = g.adjList;
-		this.directed = g.directed;
-		this.n = g.n;
-		this.m = g.m;
+	this.adjList = g.adjList;
+	this.directed = g.directed;
+	this.n = g.n;
+	this.m = g.m;
     }
     
     void initialize(int n) {
-		adjList = new AdjList[n];
-		this.n = n;
-		m = 0;
-		// create an array of Vertex objects.  Index 0 stores vertex 1.
-		for (int i = 0; i < n; i++) {
-			adjList[i] = new AdjList(i+1);  // index i stores vertex named i+1
-		}
+	adjList = new AdjList[n];
+	this.n = n;
+	m = 0;
+	// create an array of Vertex objects.  Index 0 stores vertex 1.
+	for (int i = 0; i < n; i++) {
+	    adjList[i] = new AdjList(i+1);  // index i stores vertex named i+1
+	}
     }
     
     /** add a new edge to graph */
     public Edge addEdge(Vertex from, Vertex to, int weight, int name) {
-		Edge e = new Edge(from, to, weight, name);
-		if(directed) {
-			adj(from).outEdges.add(e);
-				adj(to).inEdges.add(e);
-		} else {
-			adj(from).outEdges.add(e);
-			adj(to).outEdges.add(e);
-		}
-		m++;  // Increment edge count
-		return e;
+	Edge e = new Edge(from, to, weight, name);
+	if(directed) {
+	    adj(from).outEdges.add(e);
+            adj(to).inEdges.add(e);
+	} else {
+	    adj(from).outEdges.add(e);
+	    adj(to).outEdges.add(e);
+	}
+	m++;  // Increment edge count
+	return e;
     }
 
     /** Add edge by index of vertices */
     public Edge addEdge(int fromIndex, int toIndex, int weight) {
-		m++;
-		Edge e = new Edge(adj(fromIndex).vertex, adj(toIndex).vertex, weight, m);
-		if(directed) {
-			adj(fromIndex).outEdges.add(e);
-				adj(toIndex).inEdges.add(e);
-		} else {
-			adj(fromIndex).outEdges.add(e);
-			adj(toIndex).outEdges.add(e);
-		}
-		return e;
+	m++;
+	Edge e = new Edge(adj(fromIndex).vertex, adj(toIndex).vertex, weight, m);
+	if(directed) {
+	    adj(fromIndex).outEdges.add(e);
+            adj(toIndex).inEdges.add(e);
+	} else {
+	    adj(fromIndex).outEdges.add(e);
+	    adj(toIndex).outEdges.add(e);
+	}
+	return e;
     }
 
     /** Number of vertices in graph */
     public int size() {
-		return n;
+	return n;
     }
 
     /** Number of edges in graph */
     public int edgeSize() {
-		return m;
+	return m;
     }
 
     /** Is the graph directed? */
     public boolean isDirected() {
-		return directed;
+	return directed;
     }
 
     /** Method to reverse the edges of a graph.  Applicable to directed graphs only. */
     public void reverseGraph() {
-		if(directed) {
-			for(AdjList list: adjList) {
-			List<Edge> tmp = list.outEdges;
-			list.outEdges = list.inEdges;
-			list.inEdges = tmp;
-			}
-		}
+	if(directed) {
+	    for(AdjList list: adjList) {
+		List<Edge> tmp = list.outEdges;
+		list.outEdges = list.inEdges;
+		list.inEdges = tmp;
+	    }
+	}
     }
     
     /**
      * Method to create iterator for vertices of graph
      */
     public Iterator<Vertex> iterator() {
-		return new GraphIterator();
+	return new GraphIterator();
     }
 
     /** Method to go through edges incident at vertex u. Can be used with implicit/explicit iterators
@@ -338,92 +336,91 @@ public class Graph implements Iterable<Graph.Vertex> {
 
     // Return an array containing the vertices of the graph
     public Vertex[] getVertexArray() {
-		Vertex[] arr = new Vertex[size()];
-		for(Vertex u: this) {
-			arr[u.getIndex()] = u;
-		}
-		return arr;
+	Vertex[] arr = new Vertex[size()];
+	for(Vertex u: this) {
+	    arr[u.getIndex()] = u;
+	}
+	return arr;
     }
 
     // Return an array containing the edges of the graph
     public Edge[] getEdgeArray() {
-		Edge[] edgeArray;
-		edgeArray = new Edge[edgeSize()];
-		int index = 0;
-		for(Vertex u: this) {
-			for(Edge e: this.incident(u)) {
-				Vertex v = e.otherEnd(u);
-				if(isDirected() || u.getName() < v.getName()) {
-					edgeArray[index++] = e;
-				}
-			}
+	Edge[] edgeArray;
+	edgeArray = new Edge[edgeSize()];
+	int index = 0;
+	for(Vertex u: this) {
+	    for(Edge e: this.incident(u)) {
+		Vertex v = e.otherEnd(u);
+		if(isDirected() || u.getName() < v.getName()) {
+		    edgeArray[index++] = e;
 		}
-		assert(index == edgeSize());
-		return edgeArray;
+	    }
+	}
+	assert(index == edgeSize());
+	return edgeArray;
     }
 
     /** Iterator class for the vertices of a graph
      */
     private class GraphIterator implements Iterator<Vertex> {
-		ArrayIterator<AdjList> it;
-		AdjList cur;
-		GraphIterator() {
-			it = new ArrayIterator<>(adjList);
-		}
-		public boolean hasNext() { return it.hasNext(); }
-		public Vertex next() { cur = it.next();  return cur.vertex; }
-		public void remove() { throw new java.lang.UnsupportedOperationException(); }
+	ArrayIterator<AdjList> it;
+	AdjList cur;
+	GraphIterator() {
+	    it = new ArrayIterator<>(adjList);
+	}
+	public boolean hasNext() { return it.hasNext(); }
+	public Vertex next() { cur = it.next();  return cur.vertex; }
+	public void remove() { throw new java.lang.UnsupportedOperationException(); }
     }
 
     /** Method to print a graph
      */
     public void printGraph(boolean hasEdgeWeights) {
-		System.out.println("______________________________________________");
-		System.out.println("Graph: n: " + size() + ", m: " + edgeSize() + ", directed: " + directed + ", Edge weights: " + hasEdgeWeights);
-		for(Vertex u: this) {
-			System.out.print(u + " : ");
-			for(Edge e: incident(u)) {
-			if(hasEdgeWeights) {
-				System.out.print(" " + e + "[" + e.weight + "]");
-			} else {
-				System.out.print(" " + e);
-			}
-			}
-			System.out.println();
+	System.out.println("______________________________________________");
+	System.out.println("Graph: n: " + size() + ", m: " + edgeSize() + ", directed: " + directed + ", Edge weights: " + hasEdgeWeights);
+	for(Vertex u: this) {
+	    System.out.print(u + " : ");
+	    for(Edge e: incident(u)) {
+		if(hasEdgeWeights) {
+		    System.out.print(" " + e + "[" + e.weight + "]");
+		} else {
+		    System.out.print(" " + e);
 		}
-		System.out.println("______________________________________________");	    
+	    }
+	    System.out.println();
 	}
+	System.out.println("______________________________________________");	    }
     
     // read a directed graph using the Scanner interface
     public static Graph readDirectedGraph(Scanner in) {
-		return readGraph(in, true);
+	return readGraph(in, true);
     }
     
     // read an undirected graph using the Scanner interface
     public static Graph readGraph(Scanner in) {
-		return readGraph(in, false);
+	return readGraph(in, false);
     }
     
     public static Graph readGraph(Scanner in, boolean directed) {
-		// read the graph related parameters
-		int n = in.nextInt(); // number of vertices in the graph
-		int m = in.nextInt(); // number of edges in the graph
+	// read the graph related parameters
+	int n = in.nextInt(); // number of vertices in the graph
+	int m = in.nextInt(); // number of edges in the graph
 
-		// create a graph instance
-		Graph g = new Graph(n, directed);
-		for (int i = 1; i <= m; i++) {
-			int u = in.nextInt();
-			int v = in.nextInt();
-			int w = in.nextInt();
-			g.addEdge(g.getVertex(u), g.getVertex(v), w, i);
-		}
-		return g;
+	// create a graph instance
+	Graph g = new Graph(n, directed);
+	for (int i = 1; i <= m; i++) {
+	    int u = in.nextInt();
+	    int v = in.nextInt();
+	    int w = in.nextInt();
+	    g.addEdge(g.getVertex(u), g.getVertex(v), w, i);
+	}
+	return g;
     }
 
     /** Interface used by classes that store properties of vertices during graph algorithms
      */
     public interface Factory {
-		public Factory make(Vertex u);
+	public Factory make(Vertex u);
     }
 
     
@@ -434,12 +431,12 @@ public class Graph implements Iterable<Graph.Vertex> {
      *           : int
      */
     public Vertex getVertex(int n) {
-		return adjList[n-1].vertex;
+	return adjList[n-1].vertex;
     }
 
     // This method is used when a graph has been cloned to get g's vertex from its clone
     public Vertex getVertex(Vertex u) {
-		return getVertex(u.getName());
+	return getVertex(u.getName());
     }
     
     // Helper function for parallel arrays used to store vertex attributes
