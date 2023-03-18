@@ -3,8 +3,9 @@
  *  Version 1.0: 2018/10/16
  */
 
-package idsa;
+package mnp200002;
 
+import idsa.Graph;
 import idsa.Graph.*;
 
 import java.io.File;
