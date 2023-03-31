@@ -1,0 +1,1 @@
+How to compile and run the code:  1. Unzip the file.2. Make sure both DFS.java and Graph.java are present in the directory.3. Open terminal inside directory "netID"4. Create .class file using command,	javac PERT.java5. Go to parent folder of "netID" using command cd ../6. Run the class file using command along with the test case file(text)	java netID.PERT lp2-pert1.txt 
