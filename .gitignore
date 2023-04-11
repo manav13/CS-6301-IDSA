@@ -3,3 +3,5 @@ PPT/
 *.iml
 *.class
 *.zip
+*.xml
+/.vscode
