@@ -9,7 +9,7 @@ import java.util.Random;
 // Skeleton for skip list implementation.
 
 public class SkipList<T extends Comparable<? super T>> {
-    static final int maxLevel = 5;
+    static final int maxLevel = 32;
     Random r;
     
     static class Entry<E> {
@@ -92,7 +92,16 @@ public class SkipList<T extends Comparable<? super T>> {
 
     // Find smallest element that is greater or equal to x
     public T ceiling(T x) {
-	    return null;
+
+        Entry<T> p = head;
+        for(int level = head.level()-1; level >= 0; level--) {
+            while(p.next[level] != tail && p.next[level].element.compareTo(x) < 0) {
+                p = p.next[level];
+            }
+            pred[level] = p;
+        }
+        // System.out.println(pred[0].next[0].getElement());
+	    return pred[0].next[0].getElement();
     }
 
     // Does list contain x?
@@ -110,22 +119,38 @@ public class SkipList<T extends Comparable<? super T>> {
 
     // Return first element of list
     public T first() {
-	    return null;
+        // System.out.println("First: " + head.next[0].getElement());
+	    return head.next[0].getElement();
     }
 
     // Find largest element that is less than or equal to x
     public T floor(T x) {
-	    return null;
+        Entry<T> p = head;
+        for(int level = head.level()-1; level >= 0; level--) {
+            while(p.next[level] != tail && p.next[level].next[level] != tail && p.next[level].next[level].element.compareTo(x) < 0) {
+                p = p.next[level];
+            }
+            pred[level] = p;
+        }
+        // System.out.println(pred[0].next[0].getElement());
+	    return pred[0].next[0].getElement();
     }
 
     // Return element at index n of list.  First element is at index 0.
     public T get(int n) {
-	    return null;
+        return getLinear(n);
     }
 
     // O(n) algorithm for get(n)
     public T getLinear(int n) {
-	    return null;
+        if(n > size-1) return null;
+
+        Entry<T> p = head;
+        for(int i=0; i<=n; i++) {
+            p = p.next[0];
+        }
+        // System.out.println(p.getElement());
+        return p.getElement();
     }
 
     // Optional operation: Eligible for EC.
@@ -146,7 +171,12 @@ public class SkipList<T extends Comparable<? super T>> {
 
     // Return last element of list
     public T last() {
-	    return null;
+        Entry<T> p = head;
+        while(p.next[0] != tail) {
+            p = p.next[0];
+        }
+        // System.out.println("Last: " + p.getElement());
+	    return p.getElement();
     }
 
  
