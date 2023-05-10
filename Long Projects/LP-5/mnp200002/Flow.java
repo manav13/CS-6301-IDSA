@@ -98,7 +98,6 @@ public class Flow {
          for(Edge e : g.inEdges(u)) {
             Vertex v = e.fromVertex();
             if(flowResidualGraph(u, e) && height[u.getIndex()] == height[v.getIndex()]+1) {
-               // add(e,u,v)
 
                int delta = 0;
                if(e.fromVertex().equals(u)) {
@@ -113,8 +112,6 @@ public class Flow {
 
                excessFlow[v.getIndex()] += delta;
                excessFlow[u.getIndex()] -= delta;
-
-               // end_add
 
                if(excessFlow[u.getIndex()] == 0)
                   return;
